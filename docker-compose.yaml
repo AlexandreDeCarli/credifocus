@@ -5,8 +5,20 @@ services:
     image: credifocus/microservices-config:1.0
     restart: always
     environment:
-      URI: 'https://github.com/gasparbarancelli/microservices-2.git'
+      URI: 'https://github.com/AlexandreDeCarli/credifocus.git'
     ports:
       - 8888:8888
     expose:
       - "8888"
+  discovery:
+    container_name: discovery
+    image: credifocus/discovery:1.0
+    restart: always
+    environment:
+      CONFIG_SERVER_URL: 'http://config:8888'
+    ports:
+      - 8761:8761
+    expose:
+      - 8761
+    depends_on:
+      - config
