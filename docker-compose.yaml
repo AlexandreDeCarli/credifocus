@@ -83,3 +83,11 @@ services:
       - 6379:6379
     expose:
       - 6379
+  trace:
+    container_name: trace
+    image: openzipkin/zipkin
+    restart: always
+    ports:
+      - 9411:9411
+    expose:
+      - 9411
