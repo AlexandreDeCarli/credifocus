@@ -60,17 +60,32 @@ services:
     depends_on:
       - config
       - discovery
-  produtos2:
-    container_name: produtos2
-    image: credifocus/produtos:1.0
+  vendas:
+    container_name: vendas
+    image: credifocus/vendas:1.0
     restart: always
     environment:
       CONFIG_SERVER_URL: 'http://config:8888'
       EUREKA_URL: 'http://discovery:8761/eureka/'
       JMS_URL: 'tcp://jms:61616'
     ports:
-      - 8083:8083
+      - 8082:8082
     depends_on:
       - config
       - discovery
       - jms
+      - mysql
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    hostname: mysql
+    environment:
+      MYSQL_DATABASE: 'vendas'
+      MYSQL_USER: 'vendas'
+      MYSQL_PASSWORD: 'vendas123'
+      MYSQL_ROOT_PASSWORD: 'vendas123'
+    ports:
+      - 3307:3306
+    expose:
+      - "3307"
