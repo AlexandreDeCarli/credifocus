@@ -60,3 +60,17 @@ services:
     depends_on:
       - config
       - discovery
+  produtos2:
+    container_name: produtos2
+    image: credifocus/produtos:1.0
+    restart: always
+    environment:
+      CONFIG_SERVER_URL: 'http://config:8888'
+      EUREKA_URL: 'http://discovery:8761/eureka/'
+      JMS_URL: 'tcp://jms:61616'
+    ports:
+      - 8083:8083
+    depends_on:
+      - config
+      - discovery
+      - jms
