@@ -31,13 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-*/maven-wrapper.jar
-*/maven-wrapper.properties
-*/MavenWrapperDownloader.java
-*/MavenWrapperDownloader.java
-/cupons/mvnw
-/vendas/mvnw
-/cupons/mvnw.cmd
-/vendas/mvnw.cmd
-/data/produtos.trace.db
-*/maven-wrapper.jar
